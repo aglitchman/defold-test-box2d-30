@@ -1,0 +1,17 @@
+function init(self)
+	self.frames = {}
+	self.fps_text = gui.get_node("fps_text")
+
+	self.version = sys.get_engine_info().version
+end
+
+function update(self, dt)
+	-- fps meter is from examples/bunnymark
+	self.frames[#self.frames + 1] = socket.gettime()
+	local fps = 0
+	if #self.frames == 61 then
+		table.remove(self.frames, 1)
+		fps = 1 / ((self.frames[#self.frames] - self.frames[1]) / (#self.frames - 1))
+	end
+	gui.set_text(self.fps_text, ("FPS: %.2f\nDefold %s"):format(fps, self.version))
+end

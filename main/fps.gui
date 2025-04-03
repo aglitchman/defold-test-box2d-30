@@ -1,0 +1,29 @@
+script: "/main/fps.gui_script"
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+nodes {
+  position {
+    x: 640.0
+    y: 65.54093
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+    z: 4.0
+  }
+  size {
+    x: 200.0
+    y: 32.0
+  }
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "default"
+  id: "fps_text"
+  yanchor: YANCHOR_BOTTOM
+  line_break: true
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
