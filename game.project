@@ -47,6 +47,7 @@ max_time_step = 0.03
 heap_size = 128
 scale_mode = stretch
 wasm_streaming = 1
+cssfile = /builtins/manifests/web/dark_theme.css
 
 [collection]
 max_instances = 2048
