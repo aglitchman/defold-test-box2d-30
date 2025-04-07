@@ -5,7 +5,7 @@ title = test_box2d_30
 main_collection = /main/main.collectionc
 
 [input]
-game_binding = /input/game.input_bindingc
+game_binding = /builtins/input/all.input_bindingc
 use_accelerometer = 0
 
 [display]
@@ -13,6 +13,7 @@ width = 1280
 height = 720
 vsync = 1
 high_dpi = 1
+dynamic_orientation = 1
 
 [script]
 shared_state = 1
@@ -25,6 +26,7 @@ app_icon = /assets/app_icons/appicon.icns
 
 [android]
 input_method = HiddenInputField
+package = project.test_box2d_30
 
 [physics]
 gravity_y = 0.0

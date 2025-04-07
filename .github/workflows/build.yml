@@ -20,38 +20,19 @@ jobs:
           distribution: "temurin"
           java-version: "21"
 
-      - name: Build Defold 1.9.8 🔧
+      - name: Build with Defold 1.9.8 🔧
         env:
           DEFOLD_VERSION: 1.9.8
           DEFOLD_BOB_SHA1: 67542769598a1b794877c96f740f3f527f63f491
         run: |
-          rm -rf build/bundle/${DEFOLD_VERSION}
-          mkdir -p build/bundle/${DEFOLD_VERSION}
+          bash ./build_via_bob.sh
 
-          wget --progress=dot:mega -O build/bundle/${DEFOLD_VERSION}/bob.jar "https://d.defold.com/archive/${DEFOLD_BOB_SHA1}/bob/bob.jar"
-          java -jar build/bundle/${DEFOLD_VERSION}/bob.jar --version
-
-          java -jar build/bundle/${DEFOLD_VERSION}/bob.jar --email a@b.com --auth 123 --texture-compression true --bundle-output build/bundle/${DEFOLD_VERSION}/wasm-web --platform wasm-web --archive --variant release clean resolve build bundle
-
-          mkdir -p build/bundle/pages
-          cp -r build/bundle/${DEFOLD_VERSION}/wasm-web/test_box2d_30 build/bundle/pages/${DEFOLD_VERSION}
-
-      # For simplicity, we copy-pasted the build code above
-      - name: Build Defold 1.10.0 🔧
+      - name: Build with Defold 1.10.0 🔧
         env:
           DEFOLD_VERSION: 1.10.0
-          DEFOLD_BOB_SHA1: 4344745412f50384662db7eafc7a9e80c9941754
+          DEFOLD_BOB_SHA1: f3d9837061710b4141617fa0b6e9b70e2b436367
         run: |
-          rm -rf build/bundle/${DEFOLD_VERSION}
-          mkdir -p build/bundle/${DEFOLD_VERSION}
-
-          wget --progress=dot:mega -O build/bundle/${DEFOLD_VERSION}/bob.jar "https://d.defold.com/archive/${DEFOLD_BOB_SHA1}/bob/bob.jar"
-          java -jar build/bundle/${DEFOLD_VERSION}/bob.jar --version
-
-          java -jar build/bundle/${DEFOLD_VERSION}/bob.jar --build-server https://build-stage.defold.com --email a@b.com --auth 123 --texture-compression true --bundle-output build/bundle/${DEFOLD_VERSION}/wasm-web --platform wasm-web --archive --variant release clean resolve build bundle
-
-          mkdir -p build/bundle/pages
-          cp -r build/bundle/${DEFOLD_VERSION}/wasm-web/test_box2d_30 build/bundle/pages/${DEFOLD_VERSION}
+          bash ./build_via_bob.sh
 
       - name: Deploy to Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
