@@ -223,7 +223,7 @@ var EngineLoader = {
     
     wasmjs_size: 264245,
     
-    asmjs_size: 5385370,
+    asmjs_size: 4000000,
     wasm_instantiate_progress: 0,
 
     stream_wasm: "true" === "true",
