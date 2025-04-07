@@ -27,7 +27,7 @@ java -jar build/bundle/${DEFOLD_VERSION}/bob.jar --version
 PLATFORM="wasm-web"
 VARIANT="release"
 echo "- Building for platform: $PLATFORM with variant: $VARIANT"
-java -jar build/bundle/${DEFOLD_VERSION}/bob.jar -e a@b.com -u 123 -tc -bo build/bundle/${DEFOLD_VERSION}/${PLATFORM} -p ${PLATFORM} --archive --variant ${VARIANT} clean resolve build bundle
+java -jar build/bundle/${DEFOLD_VERSION}/bob.jar -e a@b.com -u 123 -tc -bo build/bundle/${DEFOLD_VERSION}/${PLATFORM} -p ${PLATFORM} --ar ${PLATFORM} --archive --variant ${VARIANT} clean resolve build bundle
 
 PLATFORM="arm64-android"
 VARIANT="release"
@@ -35,7 +35,7 @@ echo "- Building for platform: $PLATFORM with variant: $VARIANT"
 # Update the package name in game.project to include the SHA1
 echo "- Updating package name in game.project"
 sed -i "s/package = .*/package = project.${TITLE}_${DEFOLD_BOB_SHA1}/" game.project
-java -jar build/bundle/${DEFOLD_VERSION}/bob.jar -e a@b.com -u 123 -tc -bo build/bundle/${DEFOLD_VERSION}/${PLATFORM} -p ${PLATFORM} --archive --variant ${VARIANT} clean resolve build bundle
+java -jar build/bundle/${DEFOLD_VERSION}/bob.jar -e a@b.com -u 123 -tc -bo build/bundle/${DEFOLD_VERSION}/${PLATFORM} -p ${PLATFORM} --ar ${PLATFORM} --archive --variant ${VARIANT} clean resolve build bundle
 
 # Copy the build to the pages directory
 mkdir -p build/bundle/pages
